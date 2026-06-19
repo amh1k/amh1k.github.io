@@ -18,12 +18,16 @@ import {
   skills,
 } from "@/lib/portfolio-data";
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+const withBasePath = (path: string) =>
+  path.startsWith("/") ? `${basePath}${path}` : path;
+
 const dockLinks = [
   { label: "Home", href: "#home", icon: Home },
   { label: "GitHub", href: profile.github, icon: Code2 },
   { label: "LinkedIn", href: profile.linkedin, icon: UserRound },
   { label: "Email", href: `mailto:${profile.email}`, icon: Mail },
-  { label: "Resume", href: profile.resume, icon: FileText },
+  { label: "Resume", href: withBasePath(profile.resume), icon: FileText },
 ];
 
 export default function HomePage() {
@@ -50,7 +54,7 @@ export default function HomePage() {
           role="img"
           aria-label="Abdul Moiz Hussain"
           style={{
-            backgroundImage: "url('/images/profile.jpeg')",
+            backgroundImage: `url('${withBasePath("/images/profile.jpeg")}')`,
           }}
         />
       </section>
@@ -190,7 +194,7 @@ export default function HomePage() {
         </p>
         <div className="footer-links">
           {contactLinks.map((link) => (
-            <a key={link.label} href={link.href}>
+            <a key={link.label} href={withBasePath(link.href)}>
               {link.label}
               <ArrowUpRight size={16} />
             </a>
