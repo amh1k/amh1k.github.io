@@ -61,7 +61,7 @@ export default function HomePage() {
         <h2>About</h2>
         <p>
           Computer Science student at FAST NUCES Karachi, currently in 6th
-          semester with a 3.63 GPA and Dean&apos;s List of Honor across 4
+          semester with a 3.68 GPA and Dean&apos;s List of Honor across 5
           semesters. I specialize in backend development, full-stack products,
           distributed systems, algorithms, and applied machine learning with
           TypeScript, Node.js, Go, C++, Python, and Next.js.
@@ -108,8 +108,7 @@ export default function HomePage() {
           <h2>Check out my latest work</h2>
           <p>
             I&apos;ve worked on backend systems, algorithm visualizers, APIs,
-            DSLs, and machine learning projects. Here are a few of my
-            favorites.
+            DSLs, and machine learning projects. Here are a few of my favorites.
           </p>
         </div>
 

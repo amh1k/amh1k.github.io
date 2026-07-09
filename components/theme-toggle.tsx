@@ -1,18 +1,24 @@
 "use client";
 
 import { Moon, Sun } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useSyncExternalStore } from "react";
 
 type Theme = "light" | "dark";
 
-export function ThemeToggle() {
-  const [theme, setTheme] = useState<Theme>(() => {
-    if (typeof window === "undefined") {
-      return "light";
-    }
+const subscribe = () => () => {};
 
-    return window.localStorage.getItem("theme") === "dark" ? "dark" : "light";
-  });
+export function ThemeToggle() {
+  const hydrated = useSyncExternalStore(
+    subscribe,
+    () => true,
+    () => false,
+  );
+  const [theme, setTheme] = useState<Theme>(() =>
+    typeof window !== "undefined" &&
+    window.localStorage.getItem("theme") === "dark"
+      ? "dark"
+      : "light",
+  );
 
   useEffect(() => {
     document.documentElement.dataset.theme = theme;
@@ -21,10 +27,11 @@ export function ThemeToggle() {
   function toggleTheme() {
     const nextTheme = theme === "dark" ? "light" : "dark";
     setTheme(nextTheme);
+    document.documentElement.dataset.theme = nextTheme;
     window.localStorage.setItem("theme", nextTheme);
   }
 
-  const Icon = theme === "dark" ? Sun : Moon;
+  const Icon = hydrated && theme === "dark" ? Sun : Moon;
 
   return (
     <button type="button" aria-label="Toggle theme" onClick={toggleTheme}>

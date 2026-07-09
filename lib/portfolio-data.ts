@@ -40,7 +40,7 @@ export const profile = {
   location: "Karachi, Pakistan",
   github: "https://github.com/amh1k",
   linkedin: "https://www.linkedin.com/in/abdulmoizhussain",
-  resume: "/abdul-moiz-resume.pdf",
+  resume: "/full_stack-2.pdf",
 };
 
 export const navItems = [
@@ -54,7 +54,7 @@ export const stats = [
   { value: "700+", label: "DSA problems solved" },
   { value: "3rd", label: "Coders Cup 2025" },
   { value: "0.986", label: "F1 in AI Got Talent" },
-  { value: "4x", label: "Dean's List Honor" },
+  { value: "5x", label: "Dean's List Honor" },
 ];
 
 export const aboutCards = [
@@ -226,9 +226,9 @@ export const achievements: Achievement[] = [
   {
     title: "Dean's List of Honor",
     label: "FAST NUCES",
-    metric: "4x",
+    metric: "5x",
     description:
-      "Awarded Dean's List of Honor for four semesters while maintaining a 3.63 GPA.",
+      "Awarded Dean's List of Honor for five semesters while maintaining a 3.68 GPA.",
     icon: BadgeCheck,
   },
 ];
@@ -238,7 +238,11 @@ export const education = {
   school: "FAST NUCES",
   degree: "Bachelor of Science in Computer Science",
   period: "Expected Graduation: 2027",
-  details: ["6th semester", "GPA: 3.63", "Dean's List of Honor for 4 semesters"],
+  details: [
+    "6th semester",
+    "GPA: 3.68",
+    "Dean's List of Honor for 5 semesters",
+  ],
 };
 
 export const contactLinks = [
@@ -262,7 +266,14 @@ export const skillGroups = [
   {
     icon: Database,
     title: "Development",
-    items: ["Node.js", "Express.js", "React", "Next.js", "PostgreSQL", "MongoDB"],
+    items: [
+      "Node.js",
+      "Express.js",
+      "React",
+      "Next.js",
+      "PostgreSQL",
+      "MongoDB",
+    ],
   },
   {
     icon: Server,
