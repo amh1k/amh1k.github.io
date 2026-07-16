@@ -4,39 +4,34 @@ type ProjectVisualProps = {
   type: Project["visual"];
 };
 
-const terminalLines = {
-  monitor: ["worker:heartbeat", "queue: 3,000 active", "retry: exponential", "status: healthy"],
-  algorithms: ["karatsuba(n)", "split -> solve -> merge", "closestPair: 2.5ms", "benchmarks: 40+"],
-  api: ["POST /auth/login", "GET /books", "PATCH /reviews/:id", "upload: cloudinary"],
-  dsl: ["room Shire", "take lantern", "if has_key -> open", "compile adventure"],
-  go: ["go test ./...", "migrate up", "rbac: enabled", "swagger: generated"],
-  llm: ["tokens -> embed", "masked attention", "rope(position)", "loss.backward()"],
+const systemLines = {
+  mithril: ["room / actor", "socket / ticket", "round / state", "score / persist"],
+  monitor: ["worker / heartbeat", "queue / 3,000 jobs", "retry / exponential", "state / healthy"],
+  algorithms: ["divide", "recurse", "measure", "visualize"],
+  api: ["POST / auth", "GET / books", "PATCH / reviews", "UPLOAD / media"],
+  dsl: ["parse", "branch", "compile", "play"],
+  go: ["migrate", "authorize", "serve", "test"],
+  llm: ["tokenize", "attend", "predict", "verify"],
 };
 
 export function ProjectVisual({ type }: ProjectVisualProps) {
-  const lines = terminalLines[type];
+  const lines = systemLines[type];
 
   return (
-    <div className="project-visual" aria-hidden="true">
-      <div className="visual-toolbar">
-        <span />
-        <span />
-        <span />
+    <div className={`project-visual project-visual-${type}`} aria-hidden="true">
+      <div className="visual-map">
+        {Array.from({ length: 12 }).map((_, index) => (
+          <span key={index} />
+        ))}
       </div>
-      <div className={`visual-body visual-${type}`}>
-        <div className="visual-grid">
-          {Array.from({ length: 20 }).map((_, index) => (
-            <span key={index} />
-          ))}
-        </div>
-        <div className="visual-code">
-          {lines.map((line, index) => (
-            <p key={line}>
-              <span>{String(index + 1).padStart(2, "0")}</span>
-              {line}
-            </p>
-          ))}
-        </div>
+      <div className="visual-data">
+        <p className="visual-label">system / {type}</p>
+        {lines.map((line, index) => (
+          <p key={line}>
+            <span>{String(index + 1).padStart(2, "0")}</span>
+            {line}
+          </p>
+        ))}
       </div>
     </div>
   );

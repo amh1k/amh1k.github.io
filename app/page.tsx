@@ -1,220 +1,286 @@
+import Image from "next/image";
 import {
+  ArrowDown,
   ArrowUpRight,
   Code2,
   FileText,
-  Globe,
-  Home,
   Mail,
   MapPin,
   UserRound,
 } from "lucide-react";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { ProjectVisual } from "@/components/project-visual";
+import { ScrollReveal } from "@/components/scroll-reveal";
 import {
+  aboutCards,
   achievements,
-  contactLinks,
   education,
   profile,
   projects,
-  skills,
+  skillGroups,
+  stats,
 } from "@/lib/portfolio-data";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 const withBasePath = (path: string) =>
   path.startsWith("/") ? `${basePath}${path}` : path;
 
-const dockLinks = [
-  { label: "Home", href: "#home", icon: Home },
+const socialLinks = [
   { label: "GitHub", href: profile.github, icon: Code2 },
   { label: "LinkedIn", href: profile.linkedin, icon: UserRound },
-  { label: "Email", href: `mailto:${profile.email}`, icon: Mail },
   { label: "Resume", href: withBasePath(profile.resume), icon: FileText },
 ];
 
+const projectPriority = ["mithril", "monitor", "algorithms", "dsl", "go"];
+const featuredProjects = [...projects].sort(
+  (first, second) => {
+    const firstIndex = projectPriority.indexOf(first.visual);
+    const secondIndex = projectPriority.indexOf(second.visual);
+    return (firstIndex === -1 ? projectPriority.length : firstIndex)
+      - (secondIndex === -1 ? projectPriority.length : secondIndex);
+  },
+);
+
 export default function HomePage() {
-  const EducationIcon = education.icon;
-
   return (
-    <main id="home" className="page-shell">
-      <section className="hero">
+    <main id="home" className="site-shell">
+      <ScrollReveal />
+
+      <header className="edge-nav reveal" style={{ "--i": 0 } as React.CSSProperties}>
+        <a className="wordmark" href="#home" aria-label="Abdul Moiz Hussain, home">
+          Abdul Moiz
+        </a>
+        <div className="edge-actions">
+          <a href="#projects">Selected work</a>
+          <ThemeToggle />
+        </div>
+      </header>
+
+      <section className="hero reveal" style={{ "--i": 1 } as React.CSSProperties}>
         <div className="hero-copy">
-          <h1>Hi, I&apos;m Abdul Moiz</h1>
+          <p className="hero-deck">Full-stack engineer · backend first</p>
+          <h1>Full-stack engineering, backend first.</h1>
+          <p className="hero-lede">{profile.tagline}</p>
+          <div className="hero-actions">
+            <a className="primary-link" href="#projects">
+              Read the work <ArrowDown aria-hidden="true" size={18} />
+            </a>
+            <a className="text-link" href={`mailto:${profile.email}`}>
+              Write to me <ArrowUpRight aria-hidden="true" size={17} />
+            </a>
+          </div>
+        </div>
+
+        <aside className="hero-proof" aria-label="Portrait of Abdul Moiz Hussain">
+          <figure className="portrait-wrap">
+            <Image
+              className="portrait"
+              src={withBasePath("/images/profile.jpeg")}
+              alt="Portrait of Abdul Moiz Hussain"
+              width={328}
+              height={328}
+              sizes="(min-width: 60rem) 304px, (min-width: 40rem) 272px, 80vw"
+              priority
+            />
+          </figure>
+        </aside>
+      </section>
+
+      <section className="proof-strip reveal" aria-label="Personal highlights" style={{ "--i": 2 } as React.CSSProperties}>
+        {stats.map((stat) => (
+          <div className="proof-item" key={stat.label}>
+            <strong>{stat.value}</strong>
+            <span>{stat.label}</span>
+          </div>
+        ))}
+      </section>
+
+      <section className="dossier section-rule" id="about" data-scroll-reveal>
+        <header className="section-heading">
+          <h2>A working profile</h2>
           <p>
-            Building scalable web apps, backend systems, distributed monitors,
-            and AI/ML experiments.
+            I build web products from the persistence and service layers outward:
+            data models, APIs, authentication, workers, caching, tests, and the
+            responsive interfaces that make those systems useful.
           </p>
-          <a className="email-link" href={`mailto:${profile.email}`}>
-            <Mail size={22} />
-            {profile.email}
-          </a>
-        </div>
-        <div
-          className="avatar"
-          role="img"
-          aria-label="Abdul Moiz Hussain"
-          style={{
-            backgroundImage: `url('${withBasePath("/images/profile.jpeg")}')`,
-          }}
-        />
-      </section>
+        </header>
 
-      <section className="plain-section" id="about">
-        <h2>About</h2>
-        <p>
-          Computer Science student at FAST NUCES Karachi, currently in 6th
-          semester with a 3.68 GPA and Dean&apos;s List of Honor across 5
-          semesters. I specialize in backend development, full-stack products,
-          distributed systems, algorithms, and applied machine learning with
-          TypeScript, Node.js, Go, C++, Python, and Next.js.
-        </p>
-      </section>
-
-      <section className="plain-section" id="experience">
-        <h2>Focus Areas</h2>
-        <div className="list-stack">
-          <article className="resume-row">
-            <div className="row-icon">
-              <Code2 size={26} />
-            </div>
-            <div>
-              <h3>Backend and Systems</h3>
-              <p>Node.js, Express, Go, Redis, BullMQ, PostgreSQL, MongoDB</p>
-            </div>
-            <span>APIs / queues / auth</span>
-          </article>
-          <article className="resume-row">
-            <div className="row-icon">
-              <Globe size={26} />
-            </div>
-            <div>
-              <h3>Full-stack Product</h3>
-              <p>Next.js, React, TypeScript, Tailwind CSS, testing workflows</p>
-            </div>
-            <span>Web apps</span>
-          </article>
-        </div>
-      </section>
-
-      <section className="plain-section" id="skills">
-        <h2>Skills</h2>
-        <div className="skills-cloud" aria-label="Technical skills">
-          {skills.map((skill) => (
-            <span key={skill}>{skill}</span>
-          ))}
-        </div>
-      </section>
-
-      <section className="showcase-section" id="projects">
-        <div className="section-intro">
-          <h2>Check out my latest work</h2>
-          <p>
-            I&apos;ve worked on backend systems, algorithm visualizers, APIs,
-            DSLs, and machine learning projects. Here are a few of my favorites.
-          </p>
-        </div>
-
-        <div className="projects-grid">
-          {projects.map((project) => (
-            <article className="project-card" key={project.name}>
-              <h3>{project.name}</h3>
-              <p>{project.description}</p>
-              <div className="tag-row">
-                {project.tags.map((tag) => (
-                  <span key={tag}>{tag}</span>
-                ))}
-              </div>
-              <div className="project-links">
-                {project.demoUrl ? (
-                  <a href={project.demoUrl}>
-                    <Globe size={17} />
-                    Website
-                  </a>
-                ) : null}
-                <a href={project.sourceUrl}>
-                  <Code2 size={17} />
-                  Source
-                </a>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="showcase-section" id="achievements">
-        <div className="section-intro">
-          <h2>I like building things</h2>
-          <p>
-            Competitive programming, AI competitions, and academic consistency
-            with measurable outcomes.
-          </p>
-        </div>
-
-        <div className="timeline">
-          {achievements.map((achievement) => {
-            const Icon = achievement.icon;
+        <div className="focus-list" id="experience">
+          {aboutCards.map((area) => {
+            const Icon = area.icon;
             return (
-              <article className="timeline-item" key={achievement.title}>
-                <div className="timeline-icon">
-                  <Icon size={24} />
-                </div>
-                <div className="timeline-content">
-                  <p className="timeline-meta">{achievement.label}</p>
-                  <h3>{achievement.title}</h3>
-                  <p className="timeline-location">{achievement.metric}</p>
-                  <p>{achievement.description}</p>
-                </div>
+              <article className="focus-item" key={area.title}>
+                <Icon aria-hidden="true" size={21} />
+                <h3>{area.title}</h3>
+                <p>{area.text}</p>
               </article>
             );
           })}
         </div>
       </section>
 
-      <section className="plain-section education-section" id="education">
-        <h2>Education</h2>
-        <article className="resume-row">
-          <div className="row-icon">
-            <EducationIcon size={28} />
-          </div>
+      <section className="work-section section-rule" id="projects">
+        <header className="section-heading work-heading">
           <div>
-            <h3>{education.school}</h3>
-            <p>{education.degree}</p>
-            <p>{education.details.join(" / ")}</p>
+            <p className="section-note">Selected engineering · 2024—2026</p>
+            <h2>Backend-led products and systems.</h2>
           </div>
-          <span>{education.period.replace("Expected Graduation: ", "")}</span>
-        </article>
-      </section>
+          <p>
+            The primary work is full-stack and backend engineering: distributed
+            workers, production-minded APIs, database-backed services, and web
+            interfaces. Algorithm and ML work follows as supporting range.
+          </p>
+        </header>
 
-      <footer className="footer" id="contact">
-        <h2>Contact</h2>
-        <p>
-          Based in {profile.location}. Reach out for backend APIs, full-stack
-          products, systems work, or AI/ML experiments.
-        </p>
-        <div className="footer-links">
-          {contactLinks.map((link) => (
-            <a key={link.label} href={withBasePath(link.href)}>
-              {link.label}
-              <ArrowUpRight size={16} />
-            </a>
+        <div className="project-index" aria-label="Selected projects">
+          {featuredProjects.map((project, index) => (
+            <article
+              className={`project-folio project-${project.visual}`}
+              key={project.name}
+              data-scroll-reveal
+            >
+              {project.image ? (
+                <figure className="project-media project-image">
+                  <Image
+                    className="project-screenshot"
+                    src={withBasePath(project.image)}
+                    alt={`${project.name} project screenshot`}
+                    width={1920}
+                    height={1080}
+                    sizes="(min-width: 40rem) 45vw, 100vw"
+                  />
+                </figure>
+              ) : (
+                <ProjectVisual type={project.visual} />
+              )}
+              <div className="folio-content">
+                <div className="folio-heading">
+                  <span className="folio-number">{String(index + 1).padStart(2, "0")}</span>
+                  <div>
+                    <p>{project.repo}</p>
+                    <h3>{project.name}</h3>
+                  </div>
+                </div>
+
+                <p className="folio-description">{project.description}</p>
+
+                <ul className="impact-list">
+                  {project.impact.map((impact) => (
+                    <li key={impact}>{impact}</li>
+                  ))}
+                </ul>
+
+                <div className="tag-list" aria-label={`${project.name} technologies`}>
+                  {project.tags.map((tag) => (
+                    <span key={tag}>{tag}</span>
+                  ))}
+                </div>
+
+                <div className="folio-links">
+                  <a href={project.sourceUrl} target="_blank" rel="noreferrer">
+                    <Code2 aria-hidden="true" size={17} /> Source
+                  </a>
+                  {project.demoUrl ? (
+                    <a href={project.demoUrl} target="_blank" rel="noreferrer">
+                      View project <ArrowUpRight aria-hidden="true" size={16} />
+                    </a>
+                  ) : null}
+                </div>
+              </div>
+            </article>
           ))}
         </div>
-        <p className="location">
-          <MapPin size={16} />
-          {profile.location}
-        </p>
-      </footer>
+      </section>
 
-      <nav className="floating-dock" aria-label="Quick links">
-        {dockLinks.map((item, index) => {
-          const Icon = item.icon;
-          return (
-            <a key={item.label} href={item.href} aria-label={item.label}>
-              <Icon size={23} />
-              {index === 0 ? <span /> : null}
-            </a>
-          );
-        })}
-        <ThemeToggle />
-      </nav>
+      <section className="record-section section-rule" id="achievements" data-scroll-reveal>
+        <header className="section-heading">
+          <h2>A record of the work</h2>
+          <p>
+            Competitive programming and academic consistency lead this record.
+            AI competitions remain here as evidence of range, not as the portfolio&apos;s
+            primary engineering identity.
+          </p>
+        </header>
+
+        <div className="record-table">
+          {achievements.map((achievement) => {
+            const Icon = achievement.icon;
+            return (
+              <article className="record-row" key={achievement.title}>
+                <div className="record-mark">
+                  <Icon aria-hidden="true" size={19} />
+                  <strong>{achievement.metric}</strong>
+                </div>
+                <div>
+                  <p>{achievement.label}</p>
+                  <h3>{achievement.title}</h3>
+                </div>
+                <p>{achievement.description}</p>
+              </article>
+            );
+          })}
+        </div>
+      </section>
+
+      <section className="tools-section section-rule" id="skills" data-scroll-reveal>
+        <header className="section-heading compact-heading">
+          <h2>Tools of practice</h2>
+          <p>Backend and full-stack tools first, grouped by how I ship software.</p>
+        </header>
+
+        <div className="tool-ledger">
+          {skillGroups.map((group) => {
+            const Icon = group.icon;
+            return (
+              <article key={group.title}>
+                <div className="tool-title">
+                  <Icon aria-hidden="true" size={18} />
+                  <h3>{group.title}</h3>
+                </div>
+                <p>{group.items.join(" · ")}</p>
+              </article>
+            );
+          })}
+        </div>
+      </section>
+
+      <section className="education-section section-rule" id="education">
+        <div>
+          <p className="section-note">Education</p>
+          <h2>{education.school}</h2>
+        </div>
+        <div className="education-detail">
+          <h3>{education.degree}</h3>
+          <p>{education.details.join(" · ")}</p>
+          <p>{education.period}</p>
+        </div>
+      </section>
+
+      <footer className="dense-footer section-rule" id="contact" data-scroll-reveal>
+        <div className="footer-statement">
+          <p>For backend systems and full-stack product engineering, write directly.</p>
+          <a className="contact-email" href={`mailto:${profile.email}`}>
+            {profile.email} <Mail aria-hidden="true" size={20} />
+          </a>
+        </div>
+
+        <div className="footer-meta">
+          <p><MapPin aria-hidden="true" size={16} /> {profile.location}</p>
+          <div className="social-links">
+            {socialLinks.map((link) => {
+              const Icon = link.icon;
+              return (
+                <a href={link.href} key={link.label} target="_blank" rel="noreferrer">
+                  <Icon aria-hidden="true" size={17} /> {link.label}
+                </a>
+              );
+            })}
+          </div>
+          <p className="colophon">
+            Full-stack engineering · backend systems · APIs · databases · distributed workers
+          </p>
+        </div>
+      </footer>
     </main>
   );
 }

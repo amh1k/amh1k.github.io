@@ -18,7 +18,8 @@ export type Project = {
   tags: string[];
   sourceUrl: string;
   demoUrl?: string;
-  visual: "monitor" | "algorithms" | "api" | "dsl" | "go" | "llm";
+  image?: string;
+  visual: "mithril" | "monitor" | "algorithms" | "api" | "dsl" | "go" | "llm";
 };
 
 export type Achievement = {
@@ -32,9 +33,9 @@ export type Achievement = {
 export const profile = {
   name: "Abdul Moiz Hussain",
   initials: "AM",
-  role: "Full-stack developer and backend-focused CS student",
+  role: "Full-stack engineer with a backend focus",
   tagline:
-    "I build scalable web apps, APIs, distributed systems, and ML experiments with a bias for clean engineering and measurable results.",
+    "I build full-stack products from the database and API layer through to responsive interfaces, with a bias for reliable backend systems, tested code, and measurable results.",
   email: "abdulmoizx97@gmail.com",
   phone: "+92 314 3559910",
   location: "Karachi, Pakistan",
@@ -51,27 +52,27 @@ export const navItems = [
 ];
 
 export const stats = [
-  { value: "700+", label: "DSA problems solved" },
+  { value: "700+", label: "Algorithmic problems solved" },
+  { value: "5x", label: "Dean's List honors" },
   { value: "3rd", label: "Coders Cup 2025" },
-  { value: "0.986", label: "F1 in AI Got Talent" },
-  { value: "5x", label: "Dean's List Honor" },
+  { value: "3.68", label: "Current GPA" },
 ];
 
 export const aboutCards = [
   {
     icon: Server,
-    title: "Backend and systems",
-    text: "Node.js, Express, Go, Redis, BullMQ, PostgreSQL, MongoDB, auth, queues, and production-minded APIs.",
+    title: "Backend engineering",
+    text: "Node.js, Express, Go, Redis, BullMQ, PostgreSQL, MongoDB, authentication, queues, and production-minded APIs.",
   },
   {
     icon: Code2,
-    title: "Frontend craft",
-    text: "Next.js, React, TypeScript, Tailwind CSS, state management, and responsive interfaces built for clarity.",
+    title: "Full-stack delivery",
+    text: "Next.js, React, and TypeScript interfaces connected to real data, tested workflows, and clear product boundaries.",
   },
   {
-    icon: BrainCircuit,
-    title: "ML and algorithms",
-    text: "PyTorch, NumPy, scikit-learn, XGBoost, transformer fundamentals, DSA, and competitive programming.",
+    icon: Database,
+    title: "Systems foundations",
+    text: "Database design, distributed workers, caching, testing, Docker, Linux, algorithms, and performance analysis.",
   },
 ];
 
@@ -103,6 +104,21 @@ export const skills = [
 
 export const projects: Project[] = [
   {
+    name: "Mithril Tiles",
+    repo: "mithril-tiles",
+    description:
+      "Real-time multiplayer drawing and guessing game with a Go WebSocket backend, PostgreSQL persistence, and a TypeScript frontend.",
+    impact: [
+      "Used Go room actors for authoritative player, round, score, and game-lifecycle state.",
+      "Built an authenticated Next.js BFF flow with HttpOnly session cookies and single-use WebSocket tickets.",
+      "Persisted games, participants, rounds, and final scores in PostgreSQL.",
+    ],
+    tags: ["Go", "WebSockets", "PostgreSQL", "Next.js", "TypeScript"],
+    sourceUrl: "https://github.com/amh1k/mithril-tiles",
+    image: "/images/mithriltiles.png",
+    visual: "mithril",
+  },
+  {
     name: "Uptime Monitor",
     repo: "keepalive-monitoring",
     description:
@@ -114,6 +130,7 @@ export const projects: Project[] = [
     ],
     tags: ["TypeScript", "Node.js", "BullMQ", "Redis", "Vitest"],
     sourceUrl: "https://github.com/amh1k/keepalive-monitoring",
+    image: "/images/uptime-monitoring.png",
     visual: "monitor",
   },
   {
@@ -129,21 +146,8 @@ export const projects: Project[] = [
     tags: ["C++", "TypeScript", "Next.js", "Framer Motion", "Algorithms"],
     sourceUrl: "https://github.com/amh1k/Daa-Project",
     demoUrl: "https://huggingface.co/spaces/amh1k/daa-algorithm-visualizer",
+    image: "/images/algo-project.png",
     visual: "algorithms",
-  },
-  {
-    name: "StormShelf",
-    repo: "StormShelf",
-    description:
-      "Backend-only REST API for book catalogs, reviews, favorites, media uploads, and protected user workflows.",
-    impact: [
-      "Built 15+ modular endpoints across 4 Mongoose models.",
-      "Secured sensitive routes with dual-token JWT auth, Bcrypt, cookies, and middleware.",
-      "Integrated Cloudinary and Multer for scalable book cover uploads.",
-    ],
-    tags: ["Node.js", "Express.js", "MongoDB", "Mongoose", "Cloudinary"],
-    sourceUrl: "https://github.com/amh1k/StormShelf",
-    visual: "api",
   },
   {
     name: "Durin's Code",
@@ -158,6 +162,7 @@ export const projects: Project[] = [
     tags: ["C++", "DSL", "Compiler Design", "Game Engines"],
     sourceUrl: "https://github.com/amh1k/DurinsCode",
     demoUrl: "https://amh1k.github.io/DurinsCode/",
+    image: "/images/durinsCode.png",
     visual: "dsl",
   },
   {
@@ -172,21 +177,8 @@ export const projects: Project[] = [
     ],
     tags: ["Go", "PostgreSQL", "REST API", "RBAC", "Swagger"],
     sourceUrl: "https://github.com/amh1k/ScadrialAPI",
+    image: "/images/scadrial.png",
     visual: "go",
-  },
-  {
-    name: "MiniGPT / LLM From Scratch",
-    repo: "llm-from-scratch",
-    description:
-      "From-scratch transformer and LLM experiments covering attention, positional encodings, and fine-tuning ideas.",
-    impact: [
-      "Implemented decoder-only transformer fundamentals in PyTorch.",
-      "Explored causal multi-head attention, RoPE, and tensor shape verification.",
-      "Studied supervised fine-tuning and instruction-following behavior.",
-    ],
-    tags: ["Python", "PyTorch", "Transformers", "LLMs", "NumPy"],
-    sourceUrl: "https://github.com/amh1k/llm-from-scratch",
-    visual: "llm",
   },
 ];
 
@@ -254,30 +246,23 @@ export const contactLinks = [
 
 export const skillGroups = [
   {
-    icon: Code2,
-    title: "Languages",
-    items: ["Python", "C++", "JavaScript", "TypeScript", "Go"],
+    icon: Server,
+    title: "Backend",
+    items: ["Node.js", "Express.js", "Go", "PostgreSQL", "MongoDB", "Redis", "BullMQ"],
   },
   {
-    icon: BrainCircuit,
-    title: "AI and ML",
-    items: ["PyTorch", "TensorFlow", "Scikit-Learn", "NumPy", "XGBoost"],
+    icon: Code2,
+    title: "Frontend",
+    items: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Responsive UI"],
   },
   {
     icon: Database,
-    title: "Development",
-    items: [
-      "Node.js",
-      "Express.js",
-      "React",
-      "Next.js",
-      "PostgreSQL",
-      "MongoDB",
-    ],
+    title: "Languages",
+    items: ["TypeScript", "JavaScript", "Go", "Python", "C++", "SQL"],
   },
   {
-    icon: Server,
-    title: "Tools",
-    items: ["Git", "Docker", "Vitest", "BullMQ", "Linux", "Redis"],
+    icon: BrainCircuit,
+    title: "Engineering tools",
+    items: ["Git", "Docker", "Linux", "Vitest", "Swagger", "Prisma", "Algorithms"],
   },
 ];

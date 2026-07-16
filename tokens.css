@@ -1,0 +1,115 @@
+/* Hallmark tokens · custom / Gruvbox engineering archive */
+:root {
+  --color-paper: oklch(94% 0.052 92);
+  --color-paper-2: oklch(89% 0.052 88);
+  --color-paper-3: oklch(84% 0.045 84);
+  --color-ink: oklch(27% 0.026 55);
+  --color-ink-2: oklch(34% 0.034 61);
+  --color-muted: oklch(37% 0.032 67);
+  --color-rule: oklch(67% 0.041 78);
+  --color-accent: oklch(45% 0.126 67);
+  --color-accent-ink: oklch(96% 0.045 92);
+  --color-secondary: oklch(43% 0.073 112);
+  --color-focus: oklch(47% 0.137 57);
+  --color-transparent: transparent;
+  --color-red: oklch(41% 0.15 29);
+  --color-orange: oklch(44% 0.14 55);
+  --color-yellow: oklch(40% 0.1 88);
+  --color-green: oklch(37% 0.1 132);
+  --color-aqua: oklch(37% 0.085 178);
+  --color-blue: oklch(38% 0.12 247);
+  --color-purple: oklch(39% 0.12 308);
+  --color-red-surface: oklch(89% 0.038 29);
+  --color-orange-surface: oklch(90% 0.04 55);
+  --color-yellow-surface: oklch(91% 0.045 88);
+  --color-green-surface: oklch(89% 0.036 132);
+  --color-aqua-surface: oklch(90% 0.032 178);
+  --color-blue-surface: oklch(89% 0.035 247);
+  --color-purple-surface: oklch(89% 0.034 308);
+
+  --font-display: "Cormorant Garamond", ui-serif, serif;
+  --font-body: "IBM Plex Sans", ui-sans-serif, sans-serif;
+
+  --space-3xs: 0.125rem;
+  --space-2xs: 0.25rem;
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2.5rem;
+  --space-2xl: 4rem;
+  --space-3xl: 6rem;
+  --space-4xl: 9rem;
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-md: 1.25rem;
+  --text-lg: 1.5625rem;
+  --text-xl: 1.953rem;
+  --text-2xl: 2.441rem;
+  --text-3xl: 3.052rem;
+  --text-4xl: 3.815rem;
+  --text-display: clamp(3.35rem, 7.5vw, 5.25rem);
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in: cubic-bezier(0.7, 0, 0.84, 0);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-micro: 100ms;
+  --dur-reduced: 150ms;
+  --dur-short: 180ms;
+  --dur-long: 360ms;
+  --dur-stagger: 80ms;
+
+  --rule-hair: 1px;
+  --rule-heavy: 2px;
+  --rule-offset: 2px;
+  --radius-card: 0;
+  --radius-pill: 999px;
+  --radius-input: 0;
+
+  --shadow-soft: 0 2px 4px oklch(27% 0.026 55 / 0.12);
+  --shadow-card: 0 10px 24px oklch(27% 0.026 55 / 0.08);
+  --shadow-link: 0 2px 5px oklch(27% 0.026 55 / 0.16);
+  --shadow-dock: 0 12px 28px oklch(27% 0.026 55 / 0.14);
+
+  --z-base: 1;
+  --z-raised: 10;
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-modal: 400;
+  --z-toast: 500;
+  --z-tooltip: 600;
+}
+
+:root[data-theme="dark"] {
+  --color-paper: oklch(20% 0.03 150);
+  --color-paper-2: oklch(25% 0.034 150);
+  --color-paper-3: oklch(30% 0.036 150);
+  --color-ink: oklch(93% 0.03 105);
+  --color-ink-2: oklch(82% 0.032 112);
+  --color-muted: oklch(73% 0.03 120);
+  --color-rule: oklch(43% 0.04 145);
+  --color-accent: oklch(74% 0.119 76);
+  --color-accent-ink: oklch(18% 0.03 150);
+  --color-secondary: oklch(68% 0.079 111);
+  --color-focus: oklch(78% 0.129 78);
+  --color-red: oklch(72% 0.14 29);
+  --color-orange: oklch(76% 0.13 58);
+  --color-yellow: oklch(80% 0.11 88);
+  --color-green: oklch(73% 0.11 132);
+  --color-aqua: oklch(75% 0.09 178);
+  --color-blue: oklch(72% 0.11 247);
+  --color-purple: oklch(74% 0.12 308);
+  --color-red-surface: oklch(30% 0.045 29);
+  --color-orange-surface: oklch(31% 0.042 58);
+  --color-yellow-surface: oklch(32% 0.04 88);
+  --color-green-surface: oklch(30% 0.038 132);
+  --color-aqua-surface: oklch(30% 0.034 178);
+  --color-blue-surface: oklch(29% 0.04 247);
+  --color-purple-surface: oklch(30% 0.04 308);
+  --shadow-soft: 0 2px 4px oklch(10% 0.02 150 / 0.22);
+  --shadow-card: 0 10px 24px oklch(10% 0.02 150 / 0.18);
+  --shadow-link: 0 2px 5px oklch(10% 0.02 150 / 0.24);
+  --shadow-dock: 0 12px 28px oklch(10% 0.02 150 / 0.28);
+}

@@ -1,0 +1,9 @@
+{
+  "scanned_at": "2026-07-16",
+  "framework": "Next.js 16 app router",
+  "styles": "Tailwind CSS 4 with app/globals.css",
+  "font_stack": "No bundled web font before redesign",
+  "palette": "Hand-built emerald and cream custom properties",
+  "motion": "Motion-cut; no animation library installed",
+  "spacing": "No named spacing scale before redesign"
+}

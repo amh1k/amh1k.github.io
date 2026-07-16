@@ -1,0 +1,27 @@
+[
+  {
+    "date": "2026-07-16",
+    "macrostructure": "Split Studio",
+    "theme": "custom",
+    "theme_axes": "light / classical-serif / warm",
+    "vibe": "Gruvbox engineering archive",
+    "enrichment": "unframed portrait with Tier-A project diagrams",
+    "brief": "Requested hero cleanup, personal highlights, stronger light contrast, and a forest-green dark mode."
+  },
+  {
+    "date": "2026-07-16",
+    "macrostructure": "Split Studio",
+    "theme": "custom",
+    "theme_axes": "light / classical-serif / warm",
+    "vibe": "Gruvbox engineering archive",
+    "enrichment": "Tier-A project diagrams + compact portrait",
+    "brief": "Backend-first full-stack portfolio with expanded Gruvbox palette and restrained motion"
+  },
+  {
+    "date": "2026-07-16",
+    "macrostructure": "Portfolio Grid",
+    "theme": "Almanac",
+    "enrichment": "existing portrait",
+    "brief": "Gruvbox old-money redesign for Abdul Moiz Hussain's portfolio"
+  }
+]
