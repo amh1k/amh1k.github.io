@@ -1084,6 +1084,12 @@ body::before {
   color: var(--color-secondary);
 }
 
+.focus-item > svg,
+.record-mark > svg {
+  flex: 0 0 auto;
+  stroke-width: 1.75;
+}
+
 .focus-item h3 {
   font-size: var(--text-lg);
   font-weight: 600;
@@ -2215,8 +2221,10 @@ html[data-reveal-ready="true"] [data-scroll-reveal].is-visible {
 }
 
 .portrait {
-  border: 0;
-  filter: none;
+  border: var(--rule-hair) solid var(--color-orange);
+  border-radius: var(--radius-media);
+  box-shadow: var(--shadow-card);
+  filter: sepia(0.08) saturate(0.88) contrast(1.04);
 }
 
 .portrait-wrap figcaption,
@@ -2250,20 +2258,23 @@ html[data-reveal-ready="true"] [data-scroll-reveal].is-visible {
   }
 }
 
-/* Hallmark final override · intrinsic project screenshot sizing */
+/* Hallmark final override · uncropped, text-independent project media */
 .project-media {
   position: relative;
   min-height: 0;
   aspect-ratio: 16 / 9;
+  border: var(--rule-hair) solid var(--project-accent);
+  border-radius: var(--radius-media);
   overflow: clip;
   background: var(--project-surface);
+  box-shadow: var(--shadow-card);
 }
 
 .project-screenshot {
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
   transition: transform var(--dur-long) var(--ease-out);
 }
@@ -2275,18 +2286,6 @@ html[data-reveal-ready="true"] [data-scroll-reveal].is-visible {
   }
 }
 
-/* Hallmark final override · consistent wide project media */
-.project-media,
-.project-visual {
-  min-height: 0;
-  aspect-ratio: 2 / 1;
-}
-
-.project-screenshot {
-  aspect-ratio: 2 / 1;
-  object-fit: cover;
-}
-
 @media (min-width: 40rem) {
   .project-folio {
     align-items: center;
@@ -2295,13 +2294,19 @@ html[data-reveal-ready="true"] [data-scroll-reveal].is-visible {
   .project-media,
   .project-visual {
     width: 100%;
-    height: clamp(13rem, 20vw, 17rem);
+    height: auto;
     min-height: 0;
-    aspect-ratio: auto;
+    aspect-ratio: 16 / 9;
     align-self: center;
   }
 
   .folio-content {
     align-self: center;
   }
+}
+
+/* Whitespace carries the quieter transitions; rules mark major zones only. */
+.record-section.section-rule,
+.education-section.section-rule {
+  border-top: 0;
 }

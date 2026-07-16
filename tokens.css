@@ -65,6 +65,7 @@
   --rule-heavy: 2px;
   --rule-offset: 2px;
   --radius-card: 0;
+  --radius-media: 0.5rem;
   --radius-pill: 999px;
   --radius-input: 0;
 
@@ -87,8 +88,8 @@
   --color-paper-2: oklch(25% 0.034 150);
   --color-paper-3: oklch(30% 0.036 150);
   --color-ink: oklch(93% 0.03 105);
-  --color-ink-2: oklch(82% 0.032 112);
-  --color-muted: oklch(73% 0.03 120);
+  --color-ink-2: oklch(86% 0.032 112);
+  --color-muted: oklch(78% 0.03 120);
   --color-rule: oklch(43% 0.04 145);
   --color-accent: oklch(74% 0.119 76);
   --color-accent-ink: oklch(18% 0.03 150);
