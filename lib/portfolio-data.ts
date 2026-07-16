@@ -115,6 +115,7 @@ export const projects: Project[] = [
     ],
     tags: ["Go", "WebSockets", "PostgreSQL", "Next.js", "TypeScript"],
     sourceUrl: "https://github.com/amh1k/mithril-tiles",
+    demoUrl: "https://mithril-tiles.vercel.app/",
     image: "/images/mithriltiles.png",
     visual: "mithril",
   },
