@@ -2,7 +2,7 @@
  * genre: editorial · macrostructure: Split Studio · theme: custom
  * vibe: Gruvbox engineering archive · axes: light / classical-serif / warm
  * enrichment: compact existing portrait + Tier-A project diagrams · nav: N9 · footer: Ft4
- * audience: engineering teams · use: inspect backend-led full-stack work and make contact
+ * audience: recruiters and engineering teams · use: inspect backend-led full-stack work and make contact
  * contrast: pass (40–41) · slop: pass (42–45) · honest: pass (46)
  * chrome: pass (47) · tokens: pass (48) · mobile: pass (34, 49–57) · icons: pass (30)
  */
@@ -2309,4 +2309,118 @@ html[data-reveal-ready="true"] [data-scroll-reveal].is-visible {
 .record-section.section-rule,
 .education-section.section-rule {
   border-top: 0;
+}
+
+/* Mobile portrait alignment and coordinated project motion. */
+.hero-proof {
+  width: 100%;
+  justify-self: stretch;
+}
+
+.portrait-wrap {
+  justify-self: center;
+  margin-inline: auto;
+}
+
+html[data-reveal-ready="true"] [data-scroll-reveal] {
+  opacity: 1;
+  transform: none;
+}
+
+@keyframes portrait-settle {
+  from {
+    opacity: 0;
+    transform: translateY(var(--space-sm)) scale(0.985);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.portrait-wrap {
+  animation: portrait-settle var(--dur-long) var(--ease-out) both;
+  animation-delay: calc(var(--dur-stagger) * 2);
+}
+
+@media (min-width: 40rem) {
+  .hero-proof {
+    width: auto;
+    justify-self: end;
+  }
+
+  .portrait-wrap {
+    justify-self: end;
+    margin-inline: 0;
+  }
+
+  html[data-reveal-ready="true"] [data-scroll-reveal] {
+    opacity: 0;
+    transform: translateY(var(--space-md));
+    transition:
+      opacity var(--dur-long) var(--ease-out),
+      transform var(--dur-long) var(--ease-out);
+  }
+
+  html[data-reveal-ready="true"] [data-scroll-reveal].is-visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  html[data-reveal-ready="true"] .project-folio {
+    opacity: 1;
+    transform: none;
+  }
+
+  html[data-reveal-ready="true"] .project-folio .project-media,
+  html[data-reveal-ready="true"] .project-folio .project-visual,
+  html[data-reveal-ready="true"] .project-folio .folio-content {
+    opacity: 0;
+    transform: translateX(calc(var(--space-lg) * -1));
+    transition:
+      opacity var(--dur-long) var(--ease-out),
+      transform var(--dur-long) var(--ease-out);
+  }
+
+  html[data-reveal-ready="true"] .project-folio .folio-content {
+    transform: translateX(var(--space-lg));
+    transition-delay: var(--dur-stagger);
+  }
+
+  html[data-reveal-ready="true"] .project-folio:nth-child(even) .project-media,
+  html[data-reveal-ready="true"] .project-folio:nth-child(even) .project-visual {
+    transform: translateX(var(--space-lg));
+  }
+
+  html[data-reveal-ready="true"] .project-folio:nth-child(even) .folio-content {
+    transform: translateX(calc(var(--space-lg) * -1));
+  }
+
+  html[data-reveal-ready="true"] .project-folio.is-visible .project-media,
+  html[data-reveal-ready="true"] .project-folio.is-visible .project-visual,
+  html[data-reveal-ready="true"] .project-folio.is-visible .folio-content {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .portrait-wrap {
+    animation: none;
+  }
+
+  html[data-reveal-ready="true"] [data-scroll-reveal],
+  html[data-reveal-ready="true"] [data-scroll-reveal].is-visible,
+  html[data-reveal-ready="true"] .project-folio .project-media,
+  html[data-reveal-ready="true"] .project-folio .project-visual,
+  html[data-reveal-ready="true"] .project-folio .folio-content,
+  html[data-reveal-ready="true"] .project-folio.is-visible .project-media,
+  html[data-reveal-ready="true"] .project-folio.is-visible .project-visual,
+  html[data-reveal-ready="true"] .project-folio.is-visible .folio-content {
+    opacity: 1;
+    transform: none;
+    transition-duration: var(--dur-reduced);
+    transition-delay: 0s;
+  }
 }

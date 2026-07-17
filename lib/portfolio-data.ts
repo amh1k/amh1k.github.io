@@ -125,9 +125,9 @@ export const projects: Project[] = [
     description:
       "Distributed uptime monitoring system with a decoupled producer-consumer architecture for scalable heartbeat jobs.",
     impact: [
-      "Processed 10+ heartbeats/sec per worker with auto-retries and failure handling.",
-      "Designed queue orchestration for 3,000+ concurrent jobs.",
-      "Covered heartbeat and Redis flows with 30+ Vitest unit and integration tests.",
+      "Built a full-stack uptime monitoring platform with a React 19/Vite dashboard and Node.js/Express backend, exposing 11 API routes for live status, latency trends, uptime reports, SSL expiry tracking, and incident alerts.",
+      "Implemented two Redis/BullMQ pipelines for recurring checks and notifications, with a 10-jobs/second rate limit, HTTP/TLS validation, three-failure incident thresholds, and z-score anomaly detection over 10 checks.",
+      "Authored 37 Vitest tests—21 unit, 13 integration, and 3 end-to-end—covering authentication, validation, notifications, worker behavior, SSL checks, and monitor state transitions.",
     ],
     tags: ["TypeScript", "Node.js", "BullMQ", "Redis", "Vitest"],
     sourceUrl: "https://github.com/amh1k/keepalive-monitoring",
